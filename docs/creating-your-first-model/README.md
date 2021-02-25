@@ -130,3 +130,6 @@ a thing) into text. In this case, we simply say that when trying to turn a Perso
 simply use that persons 'name' attribute. 
 
 You don't even need to restart the server, if you just refresh the person list and you should see the names appearing.
+
+Now, remember every time you add or edit a model's definition, you will need to create a new  migration with 
+`makemigrations` and then apply them to the database with `migrate`. 
