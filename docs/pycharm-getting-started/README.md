@@ -1,7 +1,9 @@
 # Getting Started with PyCharm Community Edition
 
 An easy way to get started on this project is to use the 
-[PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/).
+[PyCharm Community Edition](https://www.jetbrains.com/pycharm/download/). In the examples
+I'm also going to assume you will be using [Miniconda](https://docs.conda.io/en/latest/miniconda.html) and have this 
+installed, but it is optional.
 
 Launch PyCharm and if it opens into a default project, go to File -> Close until you see the project selector
 window:
