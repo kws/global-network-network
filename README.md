@@ -203,3 +203,4 @@ forgotten) and then you should see the admin pages.
 Have a play with this - you can see how you can do all the CRUD operations (if you delete the superuser, just create
 another one) on Groups and Users. We will later use the same functionality on our own models.
 
+You are now ready to move on to [creating your first model](./docs/creating-your-first-model/README.md).
