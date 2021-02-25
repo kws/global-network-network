@@ -12,6 +12,9 @@ application configurations we will be using.
 
 ## Getting Started
 
+‼️ If you have followed the steps in our [Using PyCharm Community Edition](./docs/README.md) guide, you can skip this 
+section. ‼️
+
 Assuming you have by now used git to check out a local copy of this repository 
 and used the python environment manager of your choice (we use 
 [Anaconda](https://www.anaconda.com/products/individual)) to create a new
