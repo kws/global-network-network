@@ -55,3 +55,19 @@ bit of time before this appears:
 Click install requirements and wait while it installs.
 
 ![PyCharm - Install requirements](https://github.com/kws/django-starter/blob/main/docs/pycharm-getting-started/02%20-%20environment.gif)
+
+## Running the Django Management Tool
+
+Once that has completed, you are ready to run Django. Most Django operations are done through the management tool,
+and you can launch this from the terminal. Click "Terminal" at the bottom of the screen, and when the prompt opens, 
+type:
+
+```shell
+python manage.py
+```
+
+You should then see a list of management commands. You can now head back to the
+[main tutorial](https://github.com/kws/django-starter#creating-the-database-and-a-superuser).
+
+![PyCharm - Launch terminal](https://github.com/kws/django-starter/blob/main/docs/pycharm-getting-started/03%20-%20launch%20terminal.gif)
+
