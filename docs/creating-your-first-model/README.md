@@ -45,16 +45,88 @@ for every new model instance you create it will get the next biggest integer.
 
 ## Creating the 'migration'
 
-But before we can
+Before we can use our model though, we need to translate the python definition into "database speak". Django does all 
+hard work for us here. It tracks changes to your models through a series of "migrations", just like when we created 
+our initial database. So the first thing we have to do is make django aware of our changes.
+
+We use the management tool to scan our code and make the migration scripts for us:
 
 ```python
 python manage.py makemigrations    
 ```
 
-```python
-python manage.py sqlmigrate skillsfinder 0001   
+You should see some output indicating that Django has found your changes and created the 
+migration:
+
 ```
+> python manage.py makemigrations
+
+Migrations for 'skillsfinder':
+  skillsfinder/migrations/0001_initial.py
+    - Create model Person
+
+```
+If you are interested, this command has created an automatically generated python file, 
+as indicated in the output above. This file can be used to actually make the changes
+to the database, in this case create the person table.
+
+The management command can also be used to show the actual commands that will be sent to
+the database:
+
+```
+> python manage.py sqlmigrate skillsfinder 0001
+
+BEGIN;
+--
+-- Create model Person
+--
+CREATE TABLE "skillsfinder_person" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "name" varchar(100) NOT NULL, "bio" text NOT NULL);
+COMMIT;
+```
+
+This shows how Django has translated the python migration into [SQL](https://www.w3schools.com/sql/) which is the 
+language the database understands. This command is just for information, and you don't need to ask for this normally. 
+
+We do however, need to ask Django to make the changes. This is again just as easy as when we first created the
+database: 
 
 ```python
 python manage.py migrate 
 ```
+
+If you don't see any errors. Then you can assume this has worked. 
+
+## Registering your model with Django Admin
+Great! Now there is only one final step we need before we can start populating our model table. We need to let the 
+Django admin tool know about our model.
+
+In the file [admin.py](../../skillsfinder/admin.py) add the following lines:
+
+```python
+from skillsfinder.models import Person
+
+admin.register(Person)
+```
+Start your server and head to the admin screens. Can you see your model? 
+
+If you add a person, it should appear in the list of persons. However, it isn't very
+easy to tell people apart. That's because we haven't given Django any information about how to
+describe people. 
+
+A very simple fix is to head back into our [models.py](../../skillsfinder/models.py) and change
+the Person so it looks like this:
+
+```python
+class Person(models.Model):
+    name = models.CharField(max_length=100)
+    bio = models.TextField()
+
+    def __str__(self):
+        return self.name
+```
+
+The bit we have added at the end, is a standard Python way of describing how to convert any Python class (an object or 
+a thing) into text. In this case, we simply say that when trying to turn a Person into a string, 
+simply use that persons 'name' attribute. 
+
+You don't even need to restart the server, if you just refresh the person list and you should see the names appearing.
