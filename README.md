@@ -177,9 +177,29 @@ Feel free to edit any of these files and then reload the page and see what happe
 
 ## Admin pages
 
-You can now create a superuser with:
+Before we start properly, there is one more key part of Django that is also important to be aware. Django
+ships with an awesome admin framework that can automatically create forms to interact with the database and
+settings. This can be used to create, read, update and delete 
+([CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete)) records in the database, such as users and any
+custom models we create.
+
+To access the admin screens though, you need be logged in to the site as an admin user. So far we only have a blank
+database, so we have no way of logging in. This is where the 
+[django management command](https://docs.djangoproject.com/en/3.1/ref/django-admin/), manage.py, comes in very handy.
+
+Stop the server if it still running by pressing CTRL-C in the terminal, and then run the following command:
 
 ```shell
 python manage.py createsuperuser
 ```
+
+This will ask you for a username and password, and update the database with these details so that you can log in. 
+
+Once that has completed, you can launch the server again with `python manage.py runserver` and open the site
+URL. Add `/admin/` to the path (e.g. http://127.0.0.1:8000/admin) and hit return, you should now be asked to log in. 
+Enter the username and password you set earlier (or go through the createsuperuser steps again if you've 
+forgotten) and then you should see the admin pages.
+
+Have a play with this - you can see how you can do all the CRUD operations (if you delete the superuser, just create
+another one) on Groups and Users. We will later use the same functionality on our own models.
 
