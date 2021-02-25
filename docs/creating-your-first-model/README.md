@@ -105,7 +105,7 @@ In the file [admin.py](../../skillsfinder/admin.py) add the following lines:
 ```python
 from skillsfinder.models import Person
 
-admin.register(Person)
+admin.site.register(Person)
 ```
 Start your server and head to the admin screens. Can you see your model? 
 
