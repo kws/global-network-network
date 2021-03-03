@@ -1,0 +1,23 @@
+{
+  "name": "Django Starter App",
+  "description": "A barebones Django app for learning models and stuff",
+  "repository": "https://github.com/kws/django-starter/",
+  "addons": ["heroku-postgresql:hobby-dev"],
+  "keywords": ["django", "tutorial"],
+  "env": {
+    "SUPERUSER": {
+      "description": "Username (and password!) for the superuser - change after installation!"
+    },
+    "SECRET_KEY": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "DJANGO_SETTINGS_MODULE": {
+      "description": "The settings file to use.",
+      "value": "website.settings_prod"
+    }
+  },
+  "scripts": {
+    "postdeploy": "./manage.py migrate"
+  }
+}
