@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Global Network Network</title>
-</head>
-<body>
+{% extends "skillsfinder/generic.html" %}
 
-{% for profile in object_list %}
-    <div><a href="{% url 'profile-detail' profile.pk %}">{{ profile.user.first_name }} {{ profile.user.last_name }}, {{ profile.organisation.name }}</a></div>
-{% endfor %}
-
-
-
-</body>
-</html>
+{% block content %}
+    {% for profile in object_list %}
+        <div><a href="{% url 'profile-detail' profile.pk %}">{{ profile.user.first_name }}
+            {{ profile.user.last_name }}, {{ profile.organisation.name }}</a></div>
+    {% endfor %}
+{% endblock %}
